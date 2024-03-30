@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Hess | Guess the Hex-code">
+	<header class="flex items-center justify-between py-4 w-full text-[#0e0e6c]">
+        <div class="flex items-center gap-1">
+            <i class="ti ti-hexagon-letter-h-filled text-4xl"></i>
+            <h1 class="text-4xl font-bold">Hess</h1>
+        </div>
+        <!-- <i class="ti ti-info-hexagon-filled text-3xl"></i> -->
+    </header>
+
+    <main class="flex flex-col sm:grid sm:grid-cols-6 text-[#0e0e6c] gap-4 my-16 sm:my-8">
+        <h2 class="sm:col-span-6 text-2xl sm:text-3xl font-bold text-center text-[#0e0e6c] mb-8 sm:mb-2">Guess the Hexadecimal code of the color!</h2>
+
+        <!-- Squares -->
+        <section class="color-to-guess-square flex flex-col sm:col-span-3 justify-between bg-[#d4e2fd] p-4 gap-4 rounded-xl">
+            <div class="color-to-guess bg-[#aafa70] w-full h-24 rounded-lg border-2 border-[#0e0e6c]"></div>
+
+            <p class="color-to-guess-code flex justify-center items-center text-xl">
+                #??????
+            </p>
+        </section>
+        
+        <section class="options flex flex-col sm:col-span-3 justify-between bg-[#d4e2fd] p-4 gap-4 rounded-xl">
+            <div class="color-to-guess bg-white w-full h-24 rounded-lg border-2 border-[#0e0e6c]"></div>
+            
+            <div class="flex items-center gap-2 justify-between">
+                <p class="color-to-guess-code flex justify-center items-center text-xl">#</p>
+                <input type="text" class="guess-input rounded border-[#0e0e6c] border-2 w-full">
+                <button class="guess-button rounded bg-[#93B8FF] px-2 border-[#0e0e6c] border-2 "><i class="ti ti-send-2"></i></button>
+            </div>
+        </section>
+
+        <!-- Options -->
+        <section class="grid grid-cols-2 sm:col-span-6 gap-3 text-xl font-semibold sm:grid-cols-3">
+            <div class="col-span-2 sm:col-span-3 bg-[#ACC8FF] p-4 rounded-xl border text-center">Accurate percentage <br> <strong class="percentage-text">??</strong>%</div>
+            <div class="see-code bg-[#93B8FF] p-4 rounded-xl border text-center">See Hex code</div>
+            <div class="retry bg-[#93B8FF] p-4 rounded-xl border text-center">Retry</div>
+            <div class="try-another-color col-span-2 sm:col-auto bg-[#93B8FF] p-4 rounded-xl border text-center">Try another colour</div>
+        </section>
+
+    </main>
+    <footer class="flex flex-col px-4 text-center sm:flex-row sm:justify-between sm:mx-2 sm:py-0 w-full">
+        <p class="text-xl m-3 sm:m-0 leading-6">
+            Desarrollado con <i class="ti ti-heart-filled text-[#0e0e6c] font-semibold"></i>
+            <br class="sm:hidden">por <a href="https://yourfriendlyadc.github.io" rel="noopener" class="text-[#0e0e6c] font-semibold" target="_blank">YourFriendlyADC</a>
+        </p>
+        <div class="social-links text-[#0e0e6c] flex justify-center gap-4 sm:gap-2">
+            <a href="https://www.instagram.com/YourFriendlyADC/" class="text-[#0e0e6c]"><i class="ti ti-brand-instagram text-3xl"></i></a>
+            <a href="https://www.pinterest.com/yourfriendlyadc/" class="text-[#0e0e6c]"><i class="ti ti-brand-pinterest text-3xl"></i></a>
+            <a href="https://twitter.com/yourfriendlyadc" class="text-[#0e0e6c]"><i class="ti ti-brand-x text-3xl"></i></a>
+        </div>
+    </footer>
+</Layout>

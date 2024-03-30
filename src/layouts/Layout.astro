@@ -1,0 +1,115 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
+	</head>
+	<body class="flex flex-col items-center justify-between h-screen">
+		<slot />
+    <script src="../scripts.js"></script>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+    --dark-blue-text: #0e0e6c;
+	}
+
+	html {
+		font-family: 'Truculenta', sans-serif;
+		background: #bed4fd;
+		background-size: 224px;
+	}
+
+	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+a {
+  text-decoration: none;
+  color: #0e0e6c;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  gap: .5rem;
+}
+
+header i {
+  font-size: 2rem;
+}
+
+/* General Container Styles */
+.container {
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* Color Square */
+
+/* Guess Square */
+.guess-code {
+  border-radius: .5rem;
+  padding: .125rem;
+  border: #517eab 2px solid;
+}
+/* Footer */
+footer {
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .5rem;
+}
+
+footer p {
+  color: #0e0e6c;
+  font-size: 1.125rem;
+}
+
+footer p br {
+  display: none;
+}
+
+footer i {
+  font-size: 1.5rem;
+}
+</style>
