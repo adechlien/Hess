@@ -1,6 +1,8 @@
 let colorToGuessElement = document.querySelector('.color-to-guess');
 let colorToGuessText = document.querySelector('.color-to-guess-code');
 
+let colorToCheckElement = document.querySelector('.color-to-check');
+
 let anotherColorButton = document.querySelector('.try-another-color');
 let retryButton = document.querySelector('.retry');
 let seeCodeButton = document.querySelector('.see-code');
@@ -48,8 +50,7 @@ guessInput.addEventListener('keypress', function(event) {
 guessButton.addEventListener('click', function() {
   let guess = guessInput.value;
   if (guess.length == 6) {
-    console.log('Guess:', guess);
-    console.log('Color to guess:', colorToGuess);
+    colorToCheckElement.style.backgroundColor = '#' + guess;
     let percentage = checkCodes(colorToGuess, guess);
     percentageText.innerHTML = percentage;
   }
@@ -73,6 +74,7 @@ function clearValues() {
   guessInput.value = '';
   percentageText.innerHTML = '??';
   colorToGuessText.innerHTML = '#??????';
+  colorToCheckElement.style.backgroundColor = '#FFFFFF';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
