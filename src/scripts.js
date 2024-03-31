@@ -32,7 +32,7 @@ function checkCodes(hex, guess) {
       const difference = Math.abs(hexDigit - guessDigit);
       percentage += 100 - (difference / 2.55);
   }
-  return Math.floor(percentage / 3).toString();
+  return (percentage / 3).toFixed(2).replace(/\.?0+$/, '').toString();
 }
 
 function updateColor() {
