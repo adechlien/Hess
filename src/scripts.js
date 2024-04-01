@@ -38,7 +38,18 @@ function checkCodes(hex, guess) {
 function updateColor() {
   let colorToGuess = generateHexCode();
   colorToGuessElement.style.backgroundColor = colorToGuess;
+  colorToGuessText.style.color = getContrast(colorToGuess);
   return colorToGuess;
+}
+
+function getContrast(color) {
+  let r = parseInt(color.substring(1, 3), 16);
+  let g = parseInt(color.substring(3, 5), 16);
+  let b = parseInt(color.substring(5, 7), 16);
+
+  let brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+  return brightness > 128 ? '#222' : '#eee';
 }
 
 guessInput.addEventListener('keypress', function(event) {
@@ -49,6 +60,11 @@ guessInput.addEventListener('keypress', function(event) {
 
 guessButton.addEventListener('click', function() {
   let guess = guessInput.value;
+  if (guess.length == 3) {
+    guess = guess[0] + guess[0] + guess[1] + guess[1] + guess[2] + guess[2];
+  }
+  console.log('Guess:', guess);
+  
   if (guess.length == 6) {
     colorToCheckElement.style.backgroundColor = '#' + guess;
     let percentage = checkCodes(colorToGuess, guess);
@@ -66,7 +82,7 @@ retryButton.addEventListener('click', function() {
 });
 
 anotherColorButton.addEventListener('click', function() {
-  updateColor();
+  colorToGuess = updateColor();
   clearValues();
 });
 
