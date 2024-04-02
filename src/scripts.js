@@ -11,8 +11,15 @@ let guessInput = document.querySelector('.guess-input');
 let guessButton = document.querySelector('.guess-button');
 
 let percentageText = document.querySelector('.percentage-text');
+let rColor = document.querySelector('.r-color');
+let gColor = document.querySelector('.g-color');
+let bColor = document.querySelector('.b-color');
 
 let colorToGuess;
+
+guessInput.addEventListener('keyup', function() {
+  this.value = this.value.toUpperCase();
+});
 
 function generateHexCode() {
   const hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
@@ -24,15 +31,17 @@ function generateHexCode() {
 }
 
 function checkCodes(hex, guess) {
+  let rgbPercentages = [0, 0, 0];
   hex = hex.substring(1);
   let percentage = 0;
   for (let i = 0; i < 6; i += 2) {
       const hexDigit = parseInt(hex.substr(i, 2), 16);
       const guessDigit = parseInt(guess.substr(i, 2), 16);
       const difference = Math.abs(hexDigit - guessDigit);
+      rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(1).replace(/\.?0+$/, '').toString();
       percentage += 100 - (difference / 2.55);
   }
-  return (percentage / 3).toFixed(2).replace(/\.?0+$/, '').toString();
+  return [(percentage / 3).toFixed(2).replace(/\.?0+$/, '').toString(), rgbPercentages];
 }
 
 function updateColor() {
@@ -58,16 +67,26 @@ guessInput.addEventListener('keypress', function(event) {
   }
 });
 
+guessInput.addEventListener('input', function() {
+  const start = this.selectionStart;
+  const end = this.selectionEnd;
+
+  this.value = this.value.replace(/[^0-9A-Fa-f]/g, '');
+  this.setSelectionRange(start, end);
+});
+
 guessButton.addEventListener('click', function() {
   let guess = guessInput.value;
   if (guess.length == 3) {
     guess = guess[0] + guess[0] + guess[1] + guess[1] + guess[2] + guess[2];
   }
-  console.log('Guess:', guess);
   
   if (guess.length == 6) {
     colorToCheckElement.style.backgroundColor = '#' + guess;
-    let percentage = checkCodes(colorToGuess, guess);
+    let [percentage, rgbPercentages] = checkCodes(colorToGuess, guess);
+    rColor.innerHTML = rgbPercentages[0];
+    gColor.innerHTML = rgbPercentages[1];
+    bColor.innerHTML = rgbPercentages[2];
     percentageText.innerHTML = percentage;
   }
 });
@@ -75,6 +94,18 @@ guessButton.addEventListener('click', function() {
 // Este no funciona aun
 seeCodeButton.addEventListener('click', function() {
   colorToGuessText.innerHTML = colorToGuess;
+});
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'R' || event.key === 'r') {
+    retryButton.click();
+  }
+  if (event.key === 'T' || event.key === 't') {
+    anotherColorButton.click();
+  }
+  if (event.key === 'S' || event.key === 's') {
+    seeCodeButton.click();
+  }
 });
 
 retryButton.addEventListener('click', function() {
@@ -89,6 +120,9 @@ anotherColorButton.addEventListener('click', function() {
 function clearValues() {
   guessInput.value = '';
   percentageText.innerHTML = '??';
+  rColor.innerHTML = '??';
+  gColor.innerHTML = '??';
+  bColor.innerHTML = '??';
   colorToGuessText.innerHTML = '#??????';
   colorToCheckElement.style.backgroundColor = '#FFFFFF';
 }

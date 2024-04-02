@@ -8,49 +8,57 @@ import Layout from '../layouts/Layout.astro';
             <i class="ti ti-hexagon-letter-h-filled text-3xl"></i>
             <h1 class="text-3xl font-bold">Hess</h1>
         </div>
-        <a href="https://youtu.be/6cJd7eyYBFs" target="_blank" rel="noopener noreferrer nofollow" class="text-lg">Don't know about Hex?</a>
+        <a href="https://youtu.be/6cJd7eyYBFs" target="_blank" rel="noopener noreferrer nofollow" class="text-lg" aria-label="Learn about Hexadecimal colors">Don't know about Hex?</a>
         <!-- <i class="ti ti-info-hexagon-filled text-3xl"></i> -->
     </header>
 
-    <main class="flex flex-col sm:grid sm:grid-cols-6 text-[#1E2667] gap-4 sm:gap-0 my-16 sm:my-8 w-full">
-        <h2 class="sm:col-span-6 text-2xl sm:text-3xl font-semibold text-center text-[#1E2667] mb-2 sm:mb-12">Guess the Hexadecimal code of the color!</h2>
+    <main class="flex flex-col sm:grid sm:grid-cols-3 justify-center text-[#1E2667] gap-4 sm:gap-0 my-16 sm:my-6 sm:p-4 w-full sm:max-w-[900px]">
+        <h2 class="sm:col-span-3 text-2xl sm:text-3xl font-semibold text-center text-[#1E2667] mb-2 sm:mb-8">Guess the Hexadecimal code of the color!</h2>
 
-        <!-- Squares -->
-        <section class="color-to-guess-square sm:col-span-2 flex flex-col justify-between bg-[#d4e2fd] p-4 gap-4 rounded-3xl border-2 border-b-[#1E2667] border-r-[#1E2667] mx-4">
-            <div class="color-to-guess w-full h-40 sm:h-full rounded-2xl border-2 border-b-[#1E2667] border-r-[#1E2667]">
+        <!-- Color to guess -->
+        <section class="color-to-guess-square flex flex-col justify-between bg-[#d4e2fd] p-4 gap-4 rounded-3xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] mx-4">
+            <div class="color-to-guess w-full h-40 sm:h-full rounded-2xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">
                 <p class="color-to-guess-code inline relative m-2 text-2xl font-semibold">#??????</p>
             </div>
         </section>
         
-        <section class="options flex flex-col sm:col-span-2 justify-between gap-2 mb-4 sm:mb-0 mx-4">
-            <div class="bg-[#d4e2fd] p-4 rounded-3xl border-2 border-b-[#1E2667] border-r-[#1E2667]">
-                <div class="color-to-check bg-white w-full h-40 rounded-2xl border-2 border-b-[#1E2667] border-r-[#1E2667]"></div>
+        <!-- Color to check -->
+        <section class="options flex flex-col justify-between gap-2 mb-4 sm:mb-0 mx-4">
+            <div class="bg-[#d4e2fd] p-4 rounded-3xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">
+                <div class="color-to-check bg-white w-full h-40 rounded-2xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]"></div>
             </div>
             <div class="flex items-center gap-2 justify-between">
-                <p class="flex justify-center items-center text-2xl px-2 font-semibold  rounded-xl bg-[#93B8FF] border-2 border-b-[#1E2667] border-r-[#1E2667]">#</p>
-                <input type="text" class="guess-input rounded-xl bg-[#d4e2fd] border-2 border-b-[#1E2667] border-r-[#1E2667] w-full h-full text-xl px-2 py-1 focus:border-transparent" placeholder="Type the hex code">
-                <button class="guess-button rounded-xl bg-[#93B8FF] px-2 border-2 border-b-[#1E2667] border-r-[#1E2667]"><i class="ti ti-send-2 text-2xl"></i></button>
+                <p class="flex justify-center items-center text-2xl px-2 font-semibold  rounded-xl bg-[#93B8FF] border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">#</p>
+                <input type="text" maxlength="6" class="guess-input rounded-xl bg-[#d4e2fd] border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] w-full h-full text-xl px-2 py-1 outline-none" placeholder="Type the hex code">
+                <button class="guess-button rounded-xl bg-[#93B8FF] px-2 border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]" aria-label="Chech hex code"><i class="ti ti-send-2 text-2xl"></i></button>
             </div>
         </section>
 
         <!-- Options -->
-        <section class="sm:col-span-2 grid grid-cols-2 sm:grid-cols-6 gap-3 text-base sm:text-lg font-semibold mx-4">
-            <div class="col-span-2 sm:col-span-6 bg-[#ACC8FF] p-2 rounded-xl text-center text-xl border-2 border-b-[#1E2667] border-r-[#1E2667]">Accurate percentage <br> <strong class="percentage-text text-3xl">??</strong>%</div>
-            <div class="see-code sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center border-2 border-b-[#1E2667] border-r-[#1E2667]">See Hex code</div>
-            <div class="retry sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center border-2 border-b-[#1E2667] border-r-[#1E2667]">Retry</div>
-            <div class="try-another-color col-span-2 sm:col-span-6 bg-[#93B8FF] p-2 rounded-xl text-center border-2 border-b-[#1E2667] border-r-[#1E2667] justify-center items-center content-center justify-items-center">Try another colour</div>
+        <section class="grid grid-cols-2 sm:grid-cols-6 content-between gap-3 text-base font-semibold mx-4">
+            <div class="col-span-2 sm:col-span-6 bg-[#ACC8FF] p-2 rounded-xl text-center text-xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">
+                Accurate percentage <br>
+                <strong class="percentage-text text-3xl">??</strong>% <br>
+                <strong class="r-color text-[#A20000]">??</strong>%<i class="hidden ti ti-chevrons-up text-[#A20000]"></i>
+                <strong class="g-color text-[#00A410]">??</strong>%<i class="hidden ti ti-chevron-up text-[#00A410]"></i>
+                <strong class="b-color text-[#0000A4]">??</strong>%<i class="hidden ti ti-chevrons-down text-[#0000A4]"></i> <br>
+                <!-- What about blue? -->
+            </div>
+            <div class="see-code sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] cursor-pointer">See Hex code (S)</div>
+            <div class="retry sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] cursor-pointer">Retry (R)</div>
+            <div class="try-another-color col-span-2 sm:col-span-6 bg-[#93B8FF] p-2 rounded-xl text-center border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] justify-center items-center content-center justify-items-center cursor-pointer">Try another colour (T)</div>
         </section>
 
     </main>
-    <footer class="flex flex-col p-2 text-center sm:flex-row-reverse sm:justify-between items-center sm:items-end gap-2 sm:mx-2 w-full">
-        <a href="https://www.buymeacoffee.com/yourfriendlyadc" target="_blank" class="flex items-center gap-1 py-2 pr-5 pl-4 rounded-xl bg-[#93B8FF]">
+
+    <footer class="flex flex-col text-center sm:flex-row-reverse sm:justify-between items-center sm:items-end gap-2 sm:mx-2 w-full">
+        <a href="https://www.buymeacoffee.com/yourfriendlyadc" target="_blank" class="flex items-center gap-1 p-2 sm:my-2 pr-5 pl-4 rounded-xl bg-[#93B8FF] border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]" aria-label="Buy me a coffee!">
             <img src="buymeacoffee-logo.svg" alt="Buy Me A Coffee" id="bmac">
-            <!-- <object type="image/svg+xml" data="/buymeacoffee-logo.svg"></object> -->
             <span class="font-semibold">Buy me a coffee!</span>
         </a>
         <p class="text-lg sm:text-xl sm:m-0 leading-6">
-            Developed with <i class="ti ti-heart-filled text-base text-[#f6d80e] font-semibold"></i> by <strong>Adechlien</strong>
-            <a href="https://yourfriendlyadc.github.io" rel="noopener" class="text-[#1E2667] font-semibold" target="_blank"></a>
+            Developed with <i class="ti ti-heart-filled text-base text-[#93B8FF] font-semibold"></i> by <strong>Adechlien</strong>
+            <a href="https://yourfriendlyadc.github.io" rel="noopener" class="text-[#1E2667] font-semibold" target="_blank" aria-label="Go to my portfolio"></a>
         </p>
         <!-- <div class="social-links text-[#1E2667] flex justify-center gap-4 sm:gap-2">
             <a href="https://www.instagram.com/YourFriendlyADC/" class="text-[#1E2667]"><i class="ti ti-brand-instagram text-2xl"></i></a>
