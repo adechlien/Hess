@@ -1,7 +1,10 @@
 let colorToGuessElement = document.querySelector('.color-to-guess');
 let colorToGuessText = document.querySelector('.color-to-guess-code');
+let colorToGuessName = document.querySelector('.color-to-guess-name');
 
 let colorToCheckElement = document.querySelector('.color-to-check');
+let colorToCheckText = document.querySelector('.color-to-check-code');
+let colorToCheckName = document.querySelector('.color-to-check-name');
 
 let anotherColorButton = document.querySelector('.try-another-color');
 let retryButton = document.querySelector('.retry');
@@ -88,12 +91,15 @@ guessButton.addEventListener('click', function() {
     gColor.innerHTML = rgbPercentages[1];
     bColor.innerHTML = rgbPercentages[2];
     percentageText.innerHTML = percentage;
+    colorToCheckText.innerHTML = '#' + guess;
+    colorToCheckText.style.color = getContrast('#' + guess);
+    getColorName(guess, 2);
   }
 });
 
-// Este no funciona aun
 seeCodeButton.addEventListener('click', function() {
   colorToGuessText.innerHTML = colorToGuess;
+  getColorName(colorToGuess.substring(1), 1);  
 });
 
 document.addEventListener('keydown', function (event) {
@@ -119,12 +125,50 @@ anotherColorButton.addEventListener('click', function() {
 
 function clearValues() {
   guessInput.value = '';
-  percentageText.innerHTML = '??';
-  rColor.innerHTML = '??';
-  gColor.innerHTML = '??';
-  bColor.innerHTML = '??';
-  colorToGuessText.innerHTML = '#??????';
-  colorToCheckElement.style.backgroundColor = '#FFFFFF';
+  percentageText.innerHTML = '--';
+  rColor.innerHTML = '--';
+  gColor.innerHTML = '--';
+  bColor.innerHTML = '--';
+  colorToGuessText.innerHTML = '';
+  colorToGuessName.innerHTML = '';
+  colorToCheckText.innerHTML = '';
+  colorToCheckName.innerHTML = '';
+  colorToCheckElement.style.backgroundColor = '#222';
+}
+
+// Color name
+function getColorName(hex, option) {
+  const apiUrl = `https://www.thecolorapi.com/id?hex=${hex}`;
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Check if the data contains the necessary properties
+      if (data && data.name && data.name.value) {
+        let colorName = data.name.value;
+        switch (option) {
+          case 1:
+            colorToGuessName.innerHTML = colorName;
+            colorToGuessName.style.color = getContrast('#' + hex);
+            break;
+          case 2:
+            colorToCheckName.innerHTML = colorName;
+            colorToCheckName.style.color = getContrast('#' + hex);
+            break;
+          default:
+            break;
+        }
+      } else {
+        console.error('Error: Unable to retrieve color name from API response.');
+      }
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -12,7 +12,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/ico" href="/hess-icon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
@@ -22,85 +22,24 @@ const { title } = Astro.props;
 	</head>
 	<body class="flex flex-col items-center justify-between h-screen">
 		<slot />
-    <script src="../scripts.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <!-- <script src="../scripts/functions.js"></script> -->
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-
 	html {
 		font-family: 'Truculenta', sans-serif;
 		background: #bed4fd;
-		background-size: 224px;
 	}
 
 	* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-a {
-  text-decoration: none;
-  color: #0e0e6c;
-}
-
-/* Header */
-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 1rem;
-  gap: .5rem;
-}
-
-header i {
-  font-size: 2rem;
-}
-
-/* General Container Styles */
-.container {
-  width: 80%;
-  height: 90vh;
-  margin: 0 auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-/* Color Square */
-
-/* Guess Square */
-.guess-code {
-  border-radius: .5rem;
-  padding: .125rem;
-  border: #517eab 2px solid;
-}
-
-/* Footer */
-footer {
-  width: 100%;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 .5rem;
-}
-
-footer p {
-  color: #0e0e6c;
-  font-size: 1.125rem;
-}
+	a {
+		text-decoration: none;
+		color: #0e0e6c;
+	}
 </style>
