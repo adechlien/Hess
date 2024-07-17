@@ -18,6 +18,14 @@ let rColor = document.querySelector('.r-color');
 let gColor = document.querySelector('.g-color');
 let bColor = document.querySelector('.b-color');
 
+let rSymbol = document.querySelector('.r-symbol');
+let gSymbol = document.querySelector('.g-symbol');
+let bSymbol = document.querySelector('.b-symbol');
+
+let message = document.querySelector('.message');
+
+// let rSuggestions = []
+
 let colorToGuess;
 
 guessInput.addEventListener('keyup', function() {
@@ -34,17 +42,25 @@ function generateHexCode() {
 }
 
 function checkCodes(hex, guess) {
+  let chevronSymbols = ["", "", ""];
   let rgbPercentages = [0, 0, 0];
   hex = hex.substring(1);
   let percentage = 0;
   for (let i = 0; i < 6; i += 2) {
-      const hexDigit = parseInt(hex.substr(i, 2), 16);
-      const guessDigit = parseInt(guess.substr(i, 2), 16);
-      const difference = Math.abs(hexDigit - guessDigit);
-      rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(1).replace(/\.?0+$/, '').toString();
-      percentage += 100 - (difference / 2.55);
+    const hexDigit = parseInt(hex.substr(i, 2), 16);
+    const guessDigit = parseInt(guess.substr(i, 2), 16);
+    if (guessDigit > hexDigit) {
+      chevronSymbols[i / 2] = "ti ti-square-chevron-down";
+    } else if (guessDigit < hexDigit) {
+      chevronSymbols[i / 2] = "ti ti-square-chevron-up";
+    } else {
+      chevronSymbols[i / 2] = "ti ti-square-check-filled";
+    }
+    const difference = Math.abs(hexDigit - guessDigit);
+    rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(1).replace(/\.?0+$/, '').toString();
+    percentage += 100 - (difference / 2.55);
   }
-  return [(percentage / 3).toFixed(2).replace(/\.?0+$/, '').toString(), rgbPercentages];
+  return [(percentage / 3).toFixed(2).replace(/\.?0+$/, '').toString(), rgbPercentages, chevronSymbols];
 }
 
 function updateColor() {
@@ -83,23 +99,34 @@ guessButton.addEventListener('click', function() {
   if (guess.length == 3) {
     guess = guess[0] + guess[0] + guess[1] + guess[1] + guess[2] + guess[2];
   }
-  
+
   if (guess.length == 6) {
     colorToCheckElement.style.backgroundColor = '#' + guess;
-    let [percentage, rgbPercentages] = checkCodes(colorToGuess, guess);
-    rColor.innerHTML = rgbPercentages[0];
-    gColor.innerHTML = rgbPercentages[1];
-    bColor.innerHTML = rgbPercentages[2];
-    percentageText.innerHTML = percentage;
+    let [percentage, rgbPercentages, symbols, message] = checkCodes(colorToGuess, guess);
+
+    rColor.innerHTML = rgbPercentages[0] + "%";
+    gColor.innerHTML = rgbPercentages[1] + "%";
+    bColor.innerHTML = rgbPercentages[2] + "%";
+
+    rSymbol.className = symbols[0] + " text-[#A20000]";
+    gSymbol.className = symbols[1] + " text-[#00A410]";
+    bSymbol.className = symbols[2] + " text-[#0000A4]";
+
+    percentageText.innerHTML = percentage + "%";
     colorToCheckText.innerHTML = '#' + guess;
     colorToCheckText.style.color = getContrast('#' + guess);
     getColorName(guess, 2);
+    if (percentage == "100") {
+      let msg = "Well done!";
+      console.log(msg);
+      message.innerHTML = msg;
+    }
   }
 });
 
 seeCodeButton.addEventListener('click', function() {
   colorToGuessText.innerHTML = colorToGuess;
-  getColorName(colorToGuess.substring(1), 1);  
+  getColorName(colorToGuess.substring(1), 1);
 });
 
 document.addEventListener('keydown', function (event) {
@@ -125,15 +152,19 @@ anotherColorButton.addEventListener('click', function() {
 
 function clearValues() {
   guessInput.value = '';
-  percentageText.innerHTML = '--';
-  rColor.innerHTML = '--';
-  gColor.innerHTML = '--';
-  bColor.innerHTML = '--';
+  percentageText.innerHTML = '•';
+  rColor.innerHTML = '•';
+  gColor.innerHTML = '•';
+  bColor.innerHTML = '•';
   colorToGuessText.innerHTML = '';
   colorToGuessName.innerHTML = '';
   colorToCheckText.innerHTML = '';
   colorToCheckName.innerHTML = '';
   colorToCheckElement.style.backgroundColor = '#222';
+  message.innerHTML = '';
+  rSymbol.className = "";
+  gSymbol.className = "";
+  bSymbol.className = "";
 }
 
 // Color name
