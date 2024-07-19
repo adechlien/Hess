@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ModalWindow from '../components/ModalWindow.jsx';
+import ModalApp from '../components/ModalApp.jsx';
 ---
 
 <Layout title="Hess | Guess the Hex-code">
@@ -8,7 +10,8 @@ import Layout from '../layouts/Layout.astro';
             <i class="ti ti-hexagon-letter-h-filled text-3xl"></i>
             <h1 class="text-3xl font-bold">Hess</h1>
         </div>
-        <a href="https://youtu.be/6cJd7eyYBFs" target="_blank" rel="noopener noreferrer nofollow" class="text-lg" aria-label="Learn about Hexadecimal colors">Don't know about Hex?</a>
+        <ModalApp client:load />
+        <!-- <a href="https://youtu.be/6cJd7eyYBFs" target="_blank" rel="noopener noreferrer nofollow" class="text-lg" aria-label="Learn about Hexadecimal colors">Don't know about Hex?</a> -->
         <!-- <i class="ti ti-info-hexagon-filled text-3xl"></i> -->
     </header>
 
@@ -65,6 +68,7 @@ import Layout from '../layouts/Layout.astro';
             <img src="buymeacoffee-logo.svg" alt="Buy Me A Coffee" id="bmac">
             <span class="font-semibold">Buy me a coffee!</span>
         </a>
+
         <p class="text-lg sm:text-xl sm:m-0 leading-6 text-[#0e0e6c]">
             Developed with <i class="ti ti-heart-filled text-base text-[#93B8FF] font-semibold"></i> by <strong>Adechlien</strong>
             <!-- <a href="https://yourfriendlyadc.github.io" rel="noopener" class="text-[#1E2667] font-semibold" target="_blank" aria-label="Go to my portfolio"></a> -->
