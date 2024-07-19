@@ -12,47 +12,48 @@ import Layout from '../layouts/Layout.astro';
         <!-- <i class="ti ti-info-hexagon-filled text-3xl"></i> -->
     </header>
 
-    <main class="flex flex-col sm:grid sm:grid-cols-3 justify-center text-[#1E2667] gap-4 sm:gap-0 my-16 sm:my-6 sm:p-4 w-full sm:max-w-[900px]">
-        <h2 class="sm:col-span-3 text-2xl sm:text-3xl font-semibold text-center text-[#1E2667] mb-2 sm:mb-8">Guess the Hexadecimal code of the colour!</h2>
+    <main class="flex flex-col sm:grid sm:grid-cols-3 justify-center text-[#1E2667] gap-4 sm:gap-0 mb-16 mt-4 sm:my-6 sm:p-4 w-full sm:max-w-[900px]">
+        <h2 class="sm:col-span-3 text-xl sm:text-3xl font-semibold text-center text-[#1E2667] mb-2 sm:mb-8">Guess the Hexadecimal code of the colour!</h2>
 
         <!-- Color to guess -->
-        <section class="color-to-guess-square flex flex-col justify-between bg-[#d4e2fd] p-4 gap-4 rounded-3xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] mx-4">
-            <div class="color-to-guess flex flex-col justify-between items-center w-full h-40 sm:h-full rounded-2xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">
+        <section class="color-to-guess-square flex flex-col justify-between bg-[#d4e2fd] p-4 gap-4 rounded-2xl shadow-sm shadow-[#1E2667] mx-4">
+            <div class="color-to-guess flex flex-col justify-between items-center w-full h-40 sm:h-full rounded-xl shadow-sm shadow-[#1E2667]">
                 <p class="color-to-guess-code text-2xl font-semibold"></p>
                 <p class="color-to-guess-name text-2xl font-semibold"></p>
             </div>
         </section>
 
         <!-- Color to check -->
-        <section class="options flex flex-col justify-between gap-2 mb-4 sm:mb-0 mx-4">
-            <div class="bg-[#d4e2fd] p-4 rounded-3xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">
-                <div class="color-to-check flex flex-col justify-between items-center bg-white w-full h-40 rounded-2xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">
+        <section class="options flex flex-col justify-between gap-0 sm:mb-0 mx-4 bg-[#d4e2fd] shadow-sm shadow-[#1E2667] rounded-2xl">
+            <div class="bg-transparent p-4 pb-2">
+                <div class="color-to-check flex flex-col justify-between items-center bg-white w-full h-40 shadow-sm shadow-[#1E2667] rounded-xl">
                     <p class="color-to-check-code text-2xl font-semibold"></p>
                     <p class="color-to-check-name text-2xl font-semibold"></p>
                 </div>
             </div>
-            <div class="flex items-center gap-2 justify-between">
-                <!-- <p class="flex justify-center items-center text-2xl px-2 font-semibold  rounded-xl bg-[#93B8FF] border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]">#</p> -->
-                <input type="text" maxlength="6" class="guess-input rounded-xl bg-[#d4e2fd] border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] w-full h-full text-xl px-2 py-1 outline-none" placeholder="Type the hex code">
-                <button class="guess-button rounded-xl bg-[#93B8FF] px-2 border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]" aria-label="Chech hex code"><i class="ti ti-send-2 text-2xl"></i></button>
+            <!-- <div class="flex items-center gap-2 justify-between bg-[#d4e2fd] rounded-xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]"> -->
+            <div class="flex gap-1 justify-between items-center bg-transparent mx-4 mb-1">
+                <i class="ti ti-hash flex font-base bg-transparent text-xl"></i>
+                <input type="text" maxlength="6" class="guess-input rounded-xl bg-transparent w-full h-full text-xl outline-none" placeholder="Type the hex code">
+                <button class="guess-button bg-transparent" aria-label="Chech hex code"><i class="ti ti-square-rounded-arrow-right text-xl"></i></button>
             </div>
         </section>
 
         <!-- Options -->
         <section class="grid grid-cols-3 sm:grid-cols-6 content-between gap-3 text-base font-semibold mx-4">
             <!-- <div class="col-span-2 sm:col-span-6 bg-[#ACC8FF] p-2 rounded-xl text-center text-xl border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667]"> -->
-            <div class="col-span-2 row-span-3 sm:col-span-6 bg-transparent p-2 rounded-xl text-center text-2xl">
-                Accurate percentage <br>
-                <strong class="percentage-text text-3xl"></strong><br>
-                <strong class="r-color text-[#A20000]"></strong><i class="r-symbol text-[#A20000]"></i> <br class="sm:hidden">
-                <strong class="g-color text-[#00A410]"></strong><i class="g-symbol text-[#00A410]"></i> <br class="sm:hidden">
-                <strong class="b-color text-[#0000A4]"></strong><i class="b-symbol text-[#0000A4]"></i> <br class="sm:hidden">
+            <div class="col-span-3 row-span-2 sm:col-span-6 bg-transparent p-1 rounded-xl text-center text-2xl">
+                <!-- Accurate percentage <br> -->
+                <strong class="percentage-text text-3xl mb-4"></strong> <br>
+                <strong class="r-color text-[#A20000] text-xl"></strong><i class="r-symbol text-[#A20000]"></i>
+                <strong class="g-color text-[#00A410] text-xl"></strong><i class="g-symbol text-[#00A410]"></i>
+                <strong class="b-color text-[#0000A4] text-xl"></strong><i class="b-symbol text-[#0000A4]"></i> <br>
                 <span class="message text-xl"></span>
                 <!-- What about blue? -->
             </div>
-            <div class="see-code flex sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center justify-center items-center cursor-pointer">See Hex code <span class="hidden sm:flex"> (S)</span></div>
-            <div class="retry flex sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center justify-center items-center cursor-pointer">Retry <span class="hidden sm:flex"> (R)</span></div>
-            <div class="try-another-color flex sm:col-span-6 bg-[#93B8FF] p-2 rounded-xl text-center justify-center items-center content-center justify-items-center cursor-pointer">Change colour <span class="hidden sm:flex"> (T)</span></div>
+            <div class="see-code flex sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center justify-center items-center cursor-pointer shadow-sm shadow-[#1E2667]">See Hex code <span class="hidden sm:flex"> (S)</span></div>
+            <div class="retry flex sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center justify-center items-center cursor-pointer shadow-sm shadow-[#1E2667]">Retry <span class="hidden sm:flex"> (R)</span></div>
+            <div class="try-another-color flex sm:col-span-6 bg-[#93B8FF] p-2 rounded-xl text-center justify-center items-center content-center justify-items-center cursor-pointer shadow-sm shadow-[#1E2667]">Change colour <span class="hidden sm:flex"> (T)</span></div>
             <!-- <div class="see-code sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] cursor-pointer">See Hex code (S)</div>
             <div class="retry sm:col-span-3 bg-[#93B8FF] p-2 rounded-xl text-center border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] cursor-pointer">Retry (R)</div>
             <div class="try-another-color col-span-2 sm:col-span-6 bg-[#93B8FF] p-2 rounded-xl text-center border-b-2 border-r-2 border-b-[#1E2667] border-r-[#1E2667] justify-center items-center content-center justify-items-center cursor-pointer">Try another colour (T)</div> -->
@@ -60,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
     </main>
 
     <footer class="flex flex-col text-center sm:flex-row-reverse sm:justify-between items-center sm:items-end gap-2 sm:mx-2 px-2 w-full">
-        <a href="https://www.buymeacoffee.com/adechlien" target="_blank" class="flex items-center gap-1 p-2 sm:my-2 pr-5 pl-4 rounded-xl bg-[#93B8FF]" aria-label="Buy me a coffee!">
+        <a href="https://www.buymeacoffee.com/adechlien" target="_blank" class="flex items-center gap-1 p-2 sm:my-2 pr-5 pl-4 rounded-xl bg-[#93B8FF] shadow-sm shadow-[#1E2667]" aria-label="Buy me a coffee!">
             <img src="buymeacoffee-logo.svg" alt="Buy Me A Coffee" id="bmac">
             <span class="font-semibold">Buy me a coffee!</span>
         </a>

@@ -102,7 +102,7 @@ guessButton.addEventListener('click', function() {
 
   if (guess.length == 6) {
     colorToCheckElement.style.backgroundColor = '#' + guess;
-    let [percentage, rgbPercentages, symbols, message] = checkCodes(colorToGuess, guess);
+    let [percentage, rgbPercentages, symbols] = checkCodes(colorToGuess, guess);
 
     rColor.innerHTML = rgbPercentages[0] + "%";
     gColor.innerHTML = rgbPercentages[1] + "%";
@@ -112,15 +112,11 @@ guessButton.addEventListener('click', function() {
     gSymbol.className = symbols[1] + " text-[#00A410]";
     bSymbol.className = symbols[2] + " text-[#0000A4]";
 
-    percentageText.innerHTML = percentage + "%";
+    percentageText.innerHTML = "—" + percentage + "%" + "—";
     colorToCheckText.innerHTML = '#' + guess;
     colorToCheckText.style.color = getContrast('#' + guess);
     getColorName(guess, 2);
-    if (percentage == "100") {
-      let msg = "Well done!";
-      console.log(msg);
-      message.innerHTML = msg;
-    }
+    message.innerHTML = getMessage(percentage);
   }
 });
 
@@ -150,18 +146,40 @@ anotherColorButton.addEventListener('click', function() {
   clearValues();
 });
 
+function getMessage(percentage) {
+  if (percentage == "100") {
+    return "Well done! You guessed the color!";
+  } else if (percentage >= "95") {
+    return "C'mon! Just fix some details!";
+  } else if (percentage >= "90") {
+    return "Almost there!";
+  } else if (percentage >= "80") {
+    return "You're close!";
+  } else if (percentage >= "70") {
+    return "Keep trying!";
+  } else if (percentage >= "60") {
+    return "You can do better!";
+  } else if (percentage >= "40") {
+    return "You're far!";
+  } else if (percentage >= "20") {
+    return "You're very far!";
+  } else {
+    return "I guessed colors are not your thing...";
+  }
+}
+
 function clearValues() {
   guessInput.value = '';
-  percentageText.innerHTML = '•';
-  rColor.innerHTML = '•';
-  gColor.innerHTML = '•';
-  bColor.innerHTML = '•';
+  percentageText.innerHTML = 'Here the global percentage';
+  rColor.innerHTML = 'Red';
+  gColor.innerHTML = 'Green';
+  bColor.innerHTML = 'Blue';
   colorToGuessText.innerHTML = '';
   colorToGuessName.innerHTML = '';
   colorToCheckText.innerHTML = '';
   colorToCheckName.innerHTML = '';
   colorToCheckElement.style.backgroundColor = '#222';
-  message.innerHTML = '';
+  message.innerHTML = 'Try to guess the color!';
   rSymbol.className = "";
   gSymbol.className = "";
   bSymbol.className = "";
