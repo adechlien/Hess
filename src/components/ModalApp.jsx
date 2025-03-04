@@ -7,7 +7,7 @@ export default function ModalApp() {
   return (
     <main className="ModalApp">
       <button onClick={() => setOpen(true)}>
-        <span className="text-lg">Don't know about Hex?</span>
+      <i className="ti ti-help-hexagon-filled text-2xl"></i>
       </button>
       <ModalWindow open={open} onClose={() => setOpen(false)}>
         <div className="bg-[#bed4fd] p-4 rounded-lg shadow-lg w-80 sm:w-96">

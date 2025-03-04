@@ -24,8 +24,6 @@ let bSymbol = document.querySelector('.b-symbol');
 
 let message = document.querySelector('.message');
 
-// let rSuggestions = []
-
 let colorToGuess;
 
 guessInput.addEventListener('keyup', function() {
@@ -49,18 +47,12 @@ function checkCodes(hex, guess) {
   for (let i = 0; i < 6; i += 2) {
     const hexDigit = parseInt(hex.substr(i, 2), 16);
     const guessDigit = parseInt(guess.substr(i, 2), 16);
-    if (guessDigit > hexDigit) {
-      chevronSymbols[i / 2] = "ti ti-square-chevron-down";
-    } else if (guessDigit < hexDigit) {
-      chevronSymbols[i / 2] = "ti ti-square-chevron-up";
-    } else {
-      chevronSymbols[i / 2] = "ti ti-square-check-filled";
-    }
+
     const difference = Math.abs(hexDigit - guessDigit);
-    rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(1).replace(/\.?0+$/, '').toString();
+    rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(0).replace(/\.?0+$/, '').toString();
     percentage += 100 - (difference / 2.55);
   }
-  return [(percentage / 3).toFixed(2).replace(/\.?0+$/, '').toString(), rgbPercentages, chevronSymbols];
+  return [(percentage / 3).toFixed(1).replace(/\.?0+$/, '').toString(), rgbPercentages, chevronSymbols];
 }
 
 function updateColor() {
@@ -108,33 +100,17 @@ guessButton.addEventListener('click', function() {
     gColor.innerHTML = rgbPercentages[1] + "%";
     bColor.innerHTML = rgbPercentages[2] + "%";
 
-    rSymbol.className = symbols[0] + " text-[#A20000]";
-    gSymbol.className = symbols[1] + " text-[#00A410]";
-    bSymbol.className = symbols[2] + " text-[#0000A4]";
-
-    percentageText.innerHTML = "—" + percentage + "%" + "—";
     colorToCheckText.innerHTML = '#' + guess;
     colorToCheckText.style.color = getContrast('#' + guess);
     getColorName(guess, 2);
     message.innerHTML = getMessage(percentage);
   }
+  guessInput.value = '';
 });
 
 seeCodeButton.addEventListener('click', function() {
   colorToGuessText.innerHTML = colorToGuess;
   getColorName(colorToGuess.substring(1), 1);
-});
-
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'R' || event.key === 'r') {
-    retryButton.click();
-  }
-  if (event.key === 'T' || event.key === 't') {
-    anotherColorButton.click();
-  }
-  if (event.key === 'S' || event.key === 's') {
-    seeCodeButton.click();
-  }
 });
 
 retryButton.addEventListener('click', function() {
@@ -170,19 +146,14 @@ function getMessage(percentage) {
 
 function clearValues() {
   guessInput.value = '';
-  percentageText.innerHTML = 'Here the global percentage';
-  rColor.innerHTML = 'Red';
-  gColor.innerHTML = 'Green';
-  bColor.innerHTML = 'Blue';
+  rColor.innerHTML = '?';
+  gColor.innerHTML = '?';
+  bColor.innerHTML = '?';
   colorToGuessText.innerHTML = '';
   colorToGuessName.innerHTML = '';
-  colorToCheckText.innerHTML = '';
   colorToCheckName.innerHTML = '';
-  colorToCheckElement.style.backgroundColor = '#222';
-  message.innerHTML = 'Try to guess the color!';
-  rSymbol.className = "";
-  gSymbol.className = "";
-  bSymbol.className = "";
+  colorToCheckElement.style.backgroundColor = '';
+  message.innerHTML = 'Guess the hexadecimal code!';
 }
 
 // Color name
