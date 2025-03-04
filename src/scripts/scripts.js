@@ -139,9 +139,7 @@ function getMessage(percentage) {
     return "You're far!";
   } else if (percentage >= "20") {
     return "You're very far!";
-  } else {
-    return "I guessed colors are not your thing...";
-  }
+  } else return "I guessed colors are not your thing...";
 }
 
 function clearValues() {
