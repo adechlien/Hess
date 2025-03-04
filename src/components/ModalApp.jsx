@@ -10,7 +10,7 @@ export default function ModalApp() {
       <i className="ti ti-help-hexagon-filled text-2xl"></i>
       </button>
       <ModalWindow open={open} onClose={() => setOpen(false)}>
-        <div className="bg-[#bed4fd] p-4 rounded-lg shadow-lg w-80 sm:w-96">
+        <div className="bg-swamp-3 p-4 rounded-lg shadow-lg w-80 sm:w-96">
           <h2 className="text-2xl font-bold mb-2">Understanding Hexadecimal colors.</h2>
           <p className="mb-2">
             Used in web design, represented by a six-digit code. The code comprises three pairs of digits (00-FF) corresponding to the red, green, and blue (RGB) components.
@@ -39,19 +39,19 @@ export default function ModalApp() {
               <ol className="list-disc ml-4">
                 <li className="mb-1">
                   <strong>First pair: </strong>
-                  <strong className="text-[#A20000]">Red</strong>
+                  <strong className="text-[#FF0000]">Red</strong>
                 </li>
                 <li className="mb-1">
                   <strong>Second pair: </strong>
-                  <strong className="text-[#00A410]">Green</strong>
+                  <strong className="text-[#00FF10]">Green</strong>
                 </li>
                 <li className="mb-1">
                   <strong>Third pair: </strong>
-                  <strong className="text-[#0000A4]">Blue</strong>
+                  <strong className="text-[#0000FF]">Blue</strong>
                 </li>
                 <li className="mb-1">
                   <strong>Example: </strong> <br></br>
-                  <div className="bg-[#333] p-2 rounded-md">
+                  <div className="bg-swamp-1 p-2 rounded-md">
                     <span className="text-[#F00]">#FF0000 (red)</span> <br></br>
                     <span className="text-[#0F0]">#00FF00 (green)</span> <br></br>
                     <span className="text-[#00F]">#0000FF (blue)</span>
