@@ -49,7 +49,7 @@ function checkCodes(hex, guess) {
     const guessDigit = parseInt(guess.substr(i, 2), 16);
 
     const difference = Math.abs(hexDigit - guessDigit);
-    rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(0).replace(/\.?0+$/, '').toString();
+    rgbPercentages[i / 2] = (100 - (difference / 2.55)).toFixed(0).toString();
     percentage += 100 - (difference / 2.55);
   }
   return [(percentage / 3).toFixed(1).replace(/\.?0+$/, '').toString(), rgbPercentages, chevronSymbols];
