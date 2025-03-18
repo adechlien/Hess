@@ -1,31 +1,48 @@
 <main class="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 size-full size-screen">
     <div class="color-to-check flex flex-col justify-center items-center size-full">
-        <p class="color-to-check-code text-2xl font-semibold"></p>
-        <p class="color-to-check-name text-2xl font-semibold"></p>
+        <!-- <p class="hidden sm:flex color-to-check-code text-2xl font-semibold"></p> -->
+        <!-- <p class="hidden sm:flex color-to-check-name text-2xl font-semibold"></p> -->
     </div>
 
     <div class="color-to-guess flex flex-col justify-center items-center size-full">
-        <p class="color-to-guess-code text-2xl font-semibold"></p>
-        <p class="color-to-guess-name text-2xl font-semibold"></p>
+        <!-- <p class="hidden sm:flex color-to-guess-code text-2xl font-semibold"></p> -->
+        <!-- <p class="hidden sm:flex color-to-guess-name text-2xl font-semibold"></p> -->
     </div>
 
-    <section class="flex flex-col fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 content-between gap-3 font-normal w-80 sm:w-96 h-fit">
-        <div class="flex flex-col w-full text-center text-2xl gap-4 bg-swamp-3 p-4 rounded-md shadow-xl text-ven-3">
-            <span class="message text-2xl"></span>
-            <div class="flex justify-center items-center bg-transparent">
-                <input type="text" maxlength="6" class="guess-input rounded-md text-ven-3 h-full text-center text-lg font-regular outline-none bg-[#fff0]" placeholder="Type the Hex code">
-                <button class="guess-button bg-transparent" aria-label="Check hex code"></button>
+    <section class="flex flex-col sm:flex-row fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 content-between items-center gap-2 font-normal h-fit">
+        <!-- Primer div con espacio reservado -->
+        <div class='rounded-md text-center flex sm:flex-col gap-2 justify-center items-center min-h-[50px] sm:w-40'>
+            <p class="color-to-check-code text-base font-semibold text-ven-3/75"></p>
+            <p class="color-to-check-name text-xl font-semibold text-ven-3"></p>
+        </div>
+
+        <div class='flex flex-col gap-2 w-64 sm:w-fit'>
+        <!-- Contenido central -->
+            <div class="flex flex-col w-full text-center text-2xl gap-3 bg-swamp-3 p-3 rounded-md shadow-xl text-ven-3">
+                <span class="message text-xl sm:text-2xl"></span>
+                <div class="flex justify-center items-center bg-transparent">
+                    <input type="text" maxlength="6" class="guess-input rounded-md text-ven-3 h-full text-center text-lg font-regular outline-none bg-[#fff0]" placeholder="Type the Hex code">
+                    <button class="guess-button bg-transparent" aria-label="Check hex code"></button>
+                </div>
+                <div class='grid w-full gap-2 grid-cols-3'>
+                    <strong class="r-color text-pat-1 text-xl bg-swamp-1 px-4 py-2 rounded-md"></strong>
+                    <strong class="g-color text-ven-4 text-xl bg-swamp-1 px-4 py-2 rounded-md"></strong>
+                    <strong class="b-color text-bou-2 text-xl bg-swamp-1 px-4 py-2 rounded-md"></strong>
+                </div>
             </div>
-            <div class='grid w-full gap-2 grid-cols-3'>
-                <strong class="r-color text-pat-1 text-xl bg-swamp-1 px-4 py-2 rounded-md"></strong>
-                <strong class="g-color text-ven-4 text-xl bg-swamp-1 px-4 py-2 rounded-md"></strong>
-                <strong class="b-color text-bou-2 text-xl bg-swamp-1 px-4 py-2 rounded-md"></strong>
+
+            <!-- Botones inferiores -->
+            <div class='grid grid-cols-3 justify-center gap-2 text-base text-ven-3 w-full'>
+                <div class="try-another-color flex bg-swamp-3 py-1 px-3 rounded-md text-center justify-center items-center cursor-pointer shadow-xl">Change</div>
+                <div class="see-code flex bg-swamp-3 py-1 px-3 rounded-md text-center justify-center items-center cursor-pointer shadow-xl">See code</div>
+                <div class="retry flex bg-swamp-3 py-1 px-3 rounded-md text-center justify-center items-center cursor-pointer shadow-xl">Retry</div>
             </div>
         </div>
-        <div class='grid grid-cols-3 justify-center gap-3 text-lg text-ven-3 w-full'>
-            <div class="try-another-color flex bg-swamp-3 py-1 px-3 rounded-md text-center justify-center items-center cursor-pointer shadow-xl">Change</div>
-            <div class="see-code flex bg-swamp-3 py-1 px-3 rounded-md text-center justify-center items-center cursor-pointer shadow-xl">See code</div>
-            <div class="retry flex bg-swamp-3 py-1 px-3 rounded-md text-center justify-center items-center cursor-pointer shadow-xl">Retry</div>
+
+        <!-- Último div con espacio reservado -->
+        <div class='rounded-md text-center flex sm:flex-col gap-2 sm:gap-1 justify-center items-center min-h-[50px] sm:w-40'>
+            <p class="color-to-guess-code text-base font-semibold text-ven-3/75"></p>
+            <p class="color-to-guess-name text-xl font-semibold text-ven-3"></p>
         </div>
     </section>
 </main>

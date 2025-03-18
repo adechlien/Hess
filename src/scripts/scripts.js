@@ -149,6 +149,7 @@ function clearValues() {
   bColor.innerHTML = '?';
   colorToGuessText.innerHTML = '';
   colorToGuessName.innerHTML = '';
+  colorToCheckText.innerHTML = '';
   colorToCheckName.innerHTML = '';
   colorToCheckElement.style.backgroundColor = '';
   message.innerHTML = 'Guess the hexadecimal code!';
